@@ -1,0 +1,59 @@
+﻿<Window x:Class="Kinect.SkeletonBasics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PING Desktop Client" Height="735" Width="770" Loaded="WindowLoaded" Closing="WindowClosing" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e"/>
+        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f"/>
+        <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2"/>
+        <Style TargetType="{x:Type Image}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+        </Style>
+
+    </Window.Resources>
+    <Grid Name="column">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="1" Grid.Column="0" Fill="#4FBAF0" Stretch="UniformToFill"/>
+        <StackPanel Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button  Width="80" Margin="5 5 5 20" Name="Training" Height="20" Click="Training_Click">Training </Button>
+            <Button  Width="80" Margin="5 5 5 20" Name="Testing" Height="20" Click="Testing_Click">Testing</Button>
+            <!--<Button  Width="80" Margin="5 5 5 20" Name="Send" Height="20" Click="Send_Click">Send</Button>-->
+        </StackPanel>
+        
+        <Grid Name="layoutGrid" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <DockPanel Name="test_dock" Grid.Row="0" Margin="134,0,133,0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="80" Visibility="Visible">
+                <!--<Image Grid.Column="1" Source="Images\Status.png" Stretch="Fill" Width="80" Height="80"  HorizontalAlignment="Left" Margin="0 0 0 5"/>-->
+                <Button Grid.Column="0" Width="60" Margin="0 20 20 0" Name="Start" Height="20" HorizontalAlignment="Left" Click="Start_Click" >Start</Button>
+                <TextBox Grid.Column="1" Width="160" Margin="20 20 20 0" Name="PersonName" Height="20" TextWrapping="Wrap"
+                     HorizontalAlignment="Left" VerticalAlignment="Center"  />
+                <Button Grid.Column="2" Width="60" Margin="20 20 20 0" Name="Stop" Height="20" HorizontalAlignment="Left" Click="Stop_Click">Stop</Button>
+                
+            </DockPanel>
+            <Viewbox Grid.Row="1" Margin="0 10 0 10" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Image Name="Image" Width="600" Height="400"/>
+            </Viewbox>
+            <StatusBar Grid.Row="2" HorizontalAlignment="Stretch" Name="statusBar" VerticalAlignment="Bottom" Background="White" Foreground="{StaticResource MediumGreyBrush}">
+                <StatusBarItem Padding="0 0 0 10">
+                    <TextBlock Name="statusBarText" Margin="-1 0 0 0"></TextBlock>
+                </StatusBarItem>
+            </StatusBar>
+            <Rectangle Grid.Row="3" Fill="#4FBAF0" Margin="-100,50,0,-52" Stretch="UniformToFill"/>
+            <Image Source="Images\White.png" Height="100" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="216,0,351,-70" Width="100" />
+        </Grid>
+    </Grid>
+</Window>
